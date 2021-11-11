@@ -90,7 +90,7 @@ const Navigation = (props) => {
     );
 
     return (
-        <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{ flexGrow: 1, pb: 1 }}>
             <AppBar position="static">
                 <Toolbar>
                     <IconButton
@@ -108,7 +108,7 @@ const Navigation = (props) => {
                         component="div"
                         sx={{ display: { xs: 'none', sm: 'block' } }}
                     >
-                        MUI
+                        Dream Bicycle
                     </Typography>
 
                     <Box sx={{ flexGrow: 1 }} />

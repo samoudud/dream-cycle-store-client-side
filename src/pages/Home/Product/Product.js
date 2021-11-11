@@ -30,7 +30,7 @@ const Product = (props) => {
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
-                    <Button sx={{ mx: 'auto' }} size="small">Buy Now</Button>
+                    <Button sx={{ mx: 'auto' }} variant='contained'>Buy Now</Button>
                 </CardActions>
             </Card>
         </Grid>

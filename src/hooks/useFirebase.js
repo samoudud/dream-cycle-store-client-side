@@ -21,7 +21,7 @@ const useFirebase = () => {
                 const newUser = { email, displayName: name };
                 setUser(newUser);
                 // save user to database
-                saveUser(email, name, 'POST');
+                addUserToDb(email, name, 'POST');
 
                 // send name to firebase after creation
                 updateProfile(auth.currentUser, {
@@ -62,7 +62,7 @@ const useFirebase = () => {
         signInWithPopup(auth, googleProvider)
             .then((result) => {
                 const user = result.user;
-                saveUser(user.email, user.displayName, 'PUT');
+                addUserToDb(user.email, user.displayName, 'PUT');
                 const destination = location?.state?.from || '/';
                 history.replace(destination);
                 setAuthError('');
@@ -106,9 +106,9 @@ const useFirebase = () => {
             .finally(() => setLoading(false));
     }
 
-    const saveUser = (email, displayName, method) => {
+    const addUserToDb = (email, displayName, method) => {
         const user = { email, displayName }
-        fetch('http://localhost:5000/users', {
+        fetch('https://infinite-everglades-57126.herokuapp.com/users', {
             method: method,
             headers: {
                 'content-type': 'application/json'

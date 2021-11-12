@@ -1,21 +1,10 @@
 import { CircularProgress, Container, Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
+import useProduct from '../../../hooks/useProduct';
 import Product from '../Product/Product';
 
 const Products = () => {
-    const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(true)
-
-    useEffect(() => {
-        fetch('https://infinite-everglades-57126.herokuapp.com/products?size=6')
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                setProducts(data)
-            })
-            .catch(error => console.log(error.message))
-            .finally(() => setLoading(false))
-    }, [])
+    const { products, loading } = useProduct();
 
     if (loading) {
         return <><CircularProgress color="secondary" />

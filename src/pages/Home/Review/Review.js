@@ -6,7 +6,7 @@ const Review = ({ review }) => {
     const { name, comment, rating } = review
     return (
         <Grid item xs={12} sm={6} md={4}>
-            <Paper sx={{ p: 2 }} elevation={5}>
+            <Paper sx={{ p: 2, maxWidth: 345 }} elevation={5}>
                 <Typography sx={{ color: 'info.main', fontWeight: 600 }} variant="h5" gutterBottom component="div">
                     {name}
                 </Typography>

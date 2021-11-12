@@ -10,8 +10,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { NavLink } from 'react-router-dom';
 import { Button } from '@mui/material';
+import useAuth from '../../../hooks/useAuth';
 
 const Navigation = (props) => {
+    const { user, logOut } = useAuth();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -74,24 +76,36 @@ const Navigation = (props) => {
                     to='explore'><Button color="inherit">Explore</Button>
                 </NavLink>
             </MenuItem>
-            <MenuItem>
-                <NavLink
-                    style={{ textDecoration: 'none' }}
-                    to='dashboard'><Button color="inherit">Dashboard</Button>
-                </NavLink></MenuItem>
-            <MenuItem>
-                <NavLink
-                    style={{ textDecoration: 'none' }}
-                    to='/login'><Button color="inherit">Login</Button>
-                </NavLink>
-            </MenuItem>
+            {
+                user.email ?
+                    <>
+                        <MenuItem>
+                            <NavLink
+                                style={{ textDecoration: 'none' }}
+                                to='dashboard'><Button color="inherit">Dashboard</Button>
+                            </NavLink>
+                        </MenuItem>
+                        <MenuItem>
+                            <Button onClick={logOut}>Log Out</Button>
+                        </MenuItem>
+                    </>
+                    :
+                    <MenuItem>
+                        <NavLink
+                            style={{ textDecoration: 'none' }}
+                            to='/login'><Button color="inherit">Login</Button>
+                        </NavLink>
+                    </MenuItem>
+            }
 
         </Menu>
     );
 
     return (
         <Box sx={{ flexGrow: 1, pb: 1 }}>
-            <AppBar position="static">
+            <AppBar
+                style={{ background: '#1B3E41' }}
+                position="static">
                 <Toolbar>
                     <IconButton
                         size="large"
@@ -117,14 +131,22 @@ const Navigation = (props) => {
                             style={{ textDecoration: 'none', color: 'white' }}
                             to='explore'><Button color="inherit">Explore</Button>
                         </NavLink>
-                        <NavLink
-                            style={{ textDecoration: 'none', color: 'white' }}
-                            to='dashboard'><Button color="inherit">Dashboard</Button>
-                        </NavLink>
-                        <NavLink
-                            style={{ textDecoration: 'none', color: 'white' }}
-                            to='/login'><Button color="inherit">Login</Button>
-                        </NavLink>
+                        {
+                            user.email ?
+                                <>
+                                    <NavLink
+                                        style={{ textDecoration: 'none', color: 'white' }}
+                                        to='dashboard'><Button color="inherit">Dashboard</Button>
+                                    </NavLink>
+                                    <Button style={{ color: 'white' }} onClick={logOut}>Log Out</Button>
+                                </>
+                                :
+                                <NavLink
+                                    style={{ textDecoration: 'none', color: 'white' }}
+                                    to='/login'><Button color="inherit">Login</Button>
+                                </NavLink>
+                        }
+
                     </Box>
                     <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
                         <IconButton

@@ -21,11 +21,12 @@ import ManageOrder from '../ManageOrder/ManageOrder';
 import AddProduct from '../AddProduct/AddProduct';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import ManageProduct from '../ManageProduct/ManageProduct';
+import AdminRoute from '../../Login/AdminRoute/AdminRoute';
 
 const drawerWidth = 240;
 
 function Dashboard(props) {
-    const { logOut } = useAuth();
+    const { logOut, admin } = useAuth();
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
     let { path, url } = useRouteMatch();
@@ -41,27 +42,32 @@ function Dashboard(props) {
             <Divider />
             <Link style={{ textDecoration: 'none' }} to={`${url}`}><Button color="inherit">Dashboard</Button></Link>
             <Divider />
-            <Box>
-                <Link style={{ textDecoration: 'none' }} to={`${url}/pay`}><Button color="inherit">Pay</Button></Link>
-                <Divider />
-                <Link style={{ textDecoration: 'none' }} to={`${url}/myOrder`} ><Button color="inherit">My Orders</Button></Link>
-                <Divider />
-                <Link style={{ textDecoration: 'none' }} to={`${url}/addReview`} ><Button color="inherit">Review</Button></Link>
+            {
+                !admin ?
+                    <Box>
+                        <Link style={{ textDecoration: 'none' }} to={`${url}/pay`}><Button color="inherit">Pay</Button></Link>
+                        <Divider />
+                        <Link style={{ textDecoration: 'none' }} to={`${url}/myOrder`} ><Button color="inherit">My Orders</Button></Link>
+                        <Divider />
+                        <Link style={{ textDecoration: 'none' }} to={`${url}/addReview`} ><Button color="inherit">Review</Button></Link>
 
-            </Box>
-            <Box>
-                <Link style={{ textDecoration: 'none' }} to={`${url}/manageOrder`}><Button color="inherit">Manage Orders</Button></Link>
-                <Divider />
+                    </Box>
+                    :
+                    <Box>
+                        <Link style={{ textDecoration: 'none' }} to={`${url}/manageOrder`}><Button color="inherit">Manage Orders</Button></Link>
+                        <Divider />
 
-                <Link style={{ textDecoration: 'none' }} to={`${url}/addProduct`} ><Button color="inherit">Add Product</Button></Link>
-                <Divider />
+                        <Link style={{ textDecoration: 'none' }} to={`${url}/addProduct`} ><Button color="inherit">Add Product</Button></Link>
+                        <Divider />
 
-                <Link style={{ textDecoration: 'none' }} to={`${url}/makeAdmin`} ><Button color="inherit">Make Admin</Button></Link>
-                <Divider />
+                        <Link style={{ textDecoration: 'none' }} to={`${url}/makeAdmin`} ><Button color="inherit">Make Admin</Button></Link>
+                        <Divider />
 
-                <Link style={{ textDecoration: 'none' }} to={`${url}/manageProduct`} ><Button color="inherit">Manage Products</Button></Link>
+                        <Link style={{ textDecoration: 'none' }} to={`${url}/manageProduct`} ><Button color="inherit">Manage Products</Button></Link>
 
-            </Box>
+                    </Box>
+            }
+
             <Divider />
             <Box>
                 <Button sx={{ color: 'blue' }} onClick={logOut} color="inherit">Log Out</Button>
@@ -151,18 +157,18 @@ function Dashboard(props) {
 
                     {/* Admin Routes */}
 
-                    <Route path={`${path}/manageOrder`}>
+                    <AdminRoute path={`${path}/manageOrder`}>
                         <ManageOrder></ManageOrder>
-                    </Route>
-                    <Route path={`${path}/addProduct`}>
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/addProduct`}>
                         <AddProduct></AddProduct>
-                    </Route>
-                    <Route path={`${path}/makeAdmin`}>
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/makeAdmin`}>
                         <MakeAdmin></MakeAdmin>
-                    </Route>
-                    <Route path={`${path}/manageProduct`}>
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/manageProduct`}>
                         <ManageProduct></ManageProduct>
-                    </Route>
+                    </AdminRoute>
 
                 </Switch>
 

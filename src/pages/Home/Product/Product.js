@@ -27,7 +27,7 @@ const Product = (props) => {
                             {name}
                         </Typography>
                         <Typography variant="h6" color="red">
-                            price: {price}
+                            price: ${price}
                         </Typography>
                         <Rating name="read-only" value={parseFloat(rating)} readOnly />
                     </CardContent>

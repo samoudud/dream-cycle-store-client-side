@@ -13,7 +13,7 @@ import { Button } from '@mui/material';
 import useAuth from '../../../hooks/useAuth';
 
 const Navigation = (props) => {
-    const { user, logOut } = useAuth();
+    const { user, logOut, admin } = useAuth();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -79,12 +79,15 @@ const Navigation = (props) => {
             {
                 user.email ?
                     <>
-                        <MenuItem>
-                            <NavLink
-                                style={{ textDecoration: 'none' }}
-                                to='dashboard'><Button color="inherit">Dashboard</Button>
-                            </NavLink>
-                        </MenuItem>
+                        {
+                            !admin && <MenuItem>
+                                <NavLink
+                                    style={{ textDecoration: 'none' }}
+                                    to='dashboard'><Button color="inherit">Dashboard</Button>
+                                </NavLink>
+                            </MenuItem>
+
+                        }
                         <MenuItem>
                             <Button onClick={logOut}>Log Out</Button>
                         </MenuItem>
@@ -127,10 +130,12 @@ const Navigation = (props) => {
 
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                        <NavLink
-                            style={{ textDecoration: 'none', color: 'white' }}
-                            to='explore'><Button color="inherit">Explore</Button>
-                        </NavLink>
+                        {
+                            !admin && <NavLink
+                                style={{ textDecoration: 'none', color: 'white' }}
+                                to='explore'><Button color="inherit">Explore</Button>
+                            </NavLink>
+                        }
                         {
                             user.email ?
                                 <>

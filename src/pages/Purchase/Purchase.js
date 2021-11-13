@@ -8,12 +8,15 @@ const Purchase = () => {
     const location = useLocation();
     const { name, price, rating, img, info } = location?.product;
     const { user } = useAuth();
+    const date = new Date();
     const initialInfo = {
         userName: user?.displayName,
         email: user?.email,
         productName: name,
         price: price,
-        img: img
+        img: img,
+        status: 'pending',
+        date: date.toDateString()
     }
     const [orderInfo, setOrderInfo] = useState(initialInfo);
 

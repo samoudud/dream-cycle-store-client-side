@@ -6,7 +6,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import List from '@mui/material/List';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -36,7 +35,11 @@ function Dashboard(props) {
 
     const drawer = (
         <div>
-            <Toolbar />
+            <Toolbar>
+                <Typography variant="h6" noWrap component="div">
+                    Dream Bicycle Store
+                </Typography>
+            </Toolbar>
             <Divider />
             <Link style={{ textDecoration: 'none' }} to='/'><Button color="inherit">Home</Button></Link>
             <Divider />
@@ -49,7 +52,7 @@ function Dashboard(props) {
                         <Divider />
                         <Link style={{ textDecoration: 'none' }} to={`${url}/myOrder`} ><Button color="inherit">My Orders</Button></Link>
                         <Divider />
-                        <Link style={{ textDecoration: 'none' }} to={`${url}/addReview`} ><Button color="inherit">Review</Button></Link>
+                        <Link style={{ textDecoration: 'none' }} to={`${url}/addReview`} ><Button color="inherit">Add Review</Button></Link>
 
                     </Box>
                     :

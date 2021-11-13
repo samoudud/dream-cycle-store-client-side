@@ -79,15 +79,12 @@ const Navigation = (props) => {
             {
                 user.email ?
                     <>
-                        {
-                            !admin && <MenuItem>
-                                <NavLink
-                                    style={{ textDecoration: 'none' }}
-                                    to='dashboard'><Button color="inherit">Dashboard</Button>
-                                </NavLink>
-                            </MenuItem>
-
-                        }
+                        <MenuItem>
+                            <NavLink
+                                style={{ textDecoration: 'none' }}
+                                to='dashboard'><Button color="inherit">Dashboard</Button>
+                            </NavLink>
+                        </MenuItem>
                         <MenuItem>
                             <Button onClick={logOut}>Log Out</Button>
                         </MenuItem>

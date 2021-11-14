@@ -1,8 +1,9 @@
-import { Button, Container, Grid, Paper, TextField, Typography } from '@mui/material';
+import { Alert, AlertTitle, Button, Container, Grid, Paper, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 
 const AddProduct = () => {
     const [productData, setReview] = useState({});
+    const [isAdded, setIsAdded] = useState(false);
     const handleOnBlur = e => {
         const field = e.target.name;
         const value = e.target.value;
@@ -12,6 +13,7 @@ const AddProduct = () => {
     }
 
     const handleAddProductSubmit = e => {
+        setIsAdded(false);
         fetch('https://infinite-everglades-57126.herokuapp.com/products', {
             method: 'POST',
             headers: {
@@ -23,6 +25,7 @@ const AddProduct = () => {
             .then(data => {
                 if (data.insertedId) {
                     alert('successful review added successfully');
+                    setIsAdded(true);
                 }
             })
 
@@ -80,6 +83,12 @@ const AddProduct = () => {
 
 
                         </form>
+                        {
+                            isAdded && <Alert severity="success">
+                                <AlertTitle>Success</AlertTitle>
+                                The Product is Added — <strong>check it out!</strong>
+                            </Alert>
+                        }
 
                     </Paper>
                 </Grid>

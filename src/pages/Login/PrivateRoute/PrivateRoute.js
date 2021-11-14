@@ -4,8 +4,8 @@ import { Route, Redirect } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 
 const PrivateRoute = ({ children, ...rest }) => {
-    const { user, isLoading } = useAuth();
-    if (isLoading) {
+    const { user, loading } = useAuth();
+    if (loading) {
         return <CircularProgress></CircularProgress>
     }
     return (

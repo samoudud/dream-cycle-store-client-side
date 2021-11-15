@@ -73,6 +73,12 @@ const Navigation = (props) => {
             <MenuItem>
                 <NavLink
                     style={{ textDecoration: 'none' }}
+                    to='/'><Button color="inherit">Home</Button>
+                </NavLink>
+            </MenuItem>
+            <MenuItem>
+                <NavLink
+                    style={{ textDecoration: 'none' }}
                     to='explore'><Button color="inherit">Explore</Button>
                 </NavLink>
             </MenuItem>
@@ -105,7 +111,8 @@ const Navigation = (props) => {
         <Box sx={{ flexGrow: 1, pb: 1 }}>
             <AppBar
                 style={{ background: '#111827' }}
-                position="static">
+                position="static"
+            >
                 <Toolbar>
                     <IconButton
                         size="large"
@@ -127,6 +134,10 @@ const Navigation = (props) => {
 
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+                        <NavLink
+                            style={{ textDecoration: 'none', color: 'white' }}
+                            to='/'><Button color="inherit">Home</Button>
+                        </NavLink>
                         {
                             !admin && <NavLink
                                 style={{ textDecoration: 'none', color: 'white' }}

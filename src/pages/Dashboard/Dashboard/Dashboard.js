@@ -34,14 +34,14 @@ import AdminRoute from '../../Login/AdminRoute/AdminRoute';
 const drawerWidth = 240;
 
 function Dashboard(props) {
-    const { logOut, admin } = useAuth();
+    const { logOut, admin, user } = useAuth();
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
     let { path, url } = useRouteMatch();
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
-    if (!admin) {
+    if (!user?.email) {
         return <><CircularProgress color="secondary" />
             <CircularProgress color="success" />
             <CircularProgress color="inherit" /></>

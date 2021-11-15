@@ -7,6 +7,7 @@ import Home from './pages/Home/Home/Home';
 import Login from './pages/Login/Login/Login';
 import PrivateRoute from './pages/Login/PrivateRoute/PrivateRoute';
 import Register from './pages/Login/Register/Register';
+import NotFound from './pages/NotFound/NotFound';
 import Purchase from './pages/Purchase/Purchase';
 
 function App() {
@@ -32,6 +33,9 @@ function App() {
             </PrivateRoute>
             <Route path='/explore'>
               <Explore></Explore>
+            </Route>
+            <Route path='*'>
+              <NotFound></NotFound>
             </Route>
           </Switch>
         </Router>

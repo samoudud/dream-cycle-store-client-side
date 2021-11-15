@@ -7,7 +7,7 @@ const TableData = ({ order, handleCancel }) => {
 
     const handleApprove = id => {
         if (order.status === 'pending') {
-            order.status = 'approved';
+            order.status = 'shipped';
 
             const url = `https://infinite-everglades-57126.herokuapp.com/orders/${id}`;
             fetch(url, {

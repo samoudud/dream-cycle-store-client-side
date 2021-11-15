@@ -22,7 +22,7 @@ const Reviews = () => {
 
     return (
         <Container sx={{ my: 2 }}>
-            <Typography sx={{ color: '#1B3E41', mt: 6, mb: 2, fontWeight: 700 }} variant="h4">Client <br /> Says About Us </Typography>
+            <Typography sx={{ color: '#111827', mt: 6, mb: 2, fontWeight: 700 }} variant="h4">Client <br /> Says About Us </Typography>
 
             <Grid container spacing={2}>
                 {

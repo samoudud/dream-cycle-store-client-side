@@ -9,8 +9,17 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import HomeIcon from '@mui/icons-material/Home';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
+import AdminPanelSettingsTwoToneIcon from '@mui/icons-material/AdminPanelSettingsTwoTone';
+import ManageAccountsTwoToneIcon from '@mui/icons-material/ManageAccountsTwoTone';
+import LoginTwoToneIcon from '@mui/icons-material/LoginTwoTone';
+import PaymentTwoToneIcon from '@mui/icons-material/PaymentTwoTone';
+import RateReviewTwoToneIcon from '@mui/icons-material/RateReviewTwoTone';
 import { Link, Switch, useRouteMatch, Route } from 'react-router-dom';
-import { Button } from '@mui/material';
+import { Button, CircularProgress } from '@mui/material';
 import useAuth from '../../../hooks/useAuth';
 import Pay from '../Pay/Pay';
 import MyOrder from '../MyOrder/MyOrder';
@@ -32,6 +41,11 @@ function Dashboard(props) {
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
+    if (!admin) {
+        return <><CircularProgress color="secondary" />
+            <CircularProgress color="success" />
+            <CircularProgress color="inherit" /></>
+    }
 
     const drawer = (
         <div>
@@ -41,39 +55,42 @@ function Dashboard(props) {
                 </Typography>
             </Toolbar>
             <Divider />
-            <Link style={{ textDecoration: 'none' }} to='/'><Button color="inherit">Home</Button></Link>
+            <Link style={{ textDecoration: 'none' }} to='/'><Button color="inherit">
+                <HomeIcon />
+                Home</Button></Link>
             <Divider />
-            <Link style={{ textDecoration: 'none' }} to={`${url}`}><Button color="inherit">Dashboard</Button></Link>
+            <Link style={{ textDecoration: 'none' }} to={`${url}`}><Button color="inherit"><DashboardIcon /> Dashboard</Button></Link>
             <Divider />
             {
                 !admin ?
                     <Box>
-                        <Link style={{ textDecoration: 'none' }} to={`${url}/pay`}><Button color="inherit">Pay</Button></Link>
+                        <Link style={{ textDecoration: 'none' }} to={`${url}/pay`}><Button color="inherit"><PaymentTwoToneIcon /> Pay</Button></Link>
                         <Divider />
-                        <Link style={{ textDecoration: 'none' }} to={`${url}/myOrder`} ><Button color="inherit">My Orders</Button></Link>
+                        <Link style={{ textDecoration: 'none' }} to={`${url}/myOrder`} ><Button color="inherit"><ShoppingBasketIcon /> My Orders</Button></Link>
                         <Divider />
-                        <Link style={{ textDecoration: 'none' }} to={`${url}/addReview`} ><Button color="inherit">Add Review</Button></Link>
+                        <Link style={{ textDecoration: 'none' }} to={`${url}/addReview`} ><Button color="inherit"><RateReviewTwoToneIcon /> Add Review</Button></Link>
 
                     </Box>
                     :
                     <Box>
-                        <Link style={{ textDecoration: 'none' }} to={`${url}/manageOrder`}><Button color="inherit">Manage Orders</Button></Link>
+
+                        <Link style={{ textDecoration: 'none' }} to={`${url}/manageOrder`}><Button color="inherit"><ShoppingBasketIcon />  Manage Orders</Button></Link>
                         <Divider />
 
-                        <Link style={{ textDecoration: 'none' }} to={`${url}/addProduct`} ><Button color="inherit">Add Product</Button></Link>
+                        <Link style={{ textDecoration: 'none' }} to={`${url}/addProduct`} ><Button color="inherit"><ProductionQuantityLimitsIcon /> Add Product</Button></Link>
                         <Divider />
 
-                        <Link style={{ textDecoration: 'none' }} to={`${url}/makeAdmin`} ><Button color="inherit">Make Admin</Button></Link>
+                        <Link style={{ textDecoration: 'none' }} to={`${url}/makeAdmin`} ><Button color="inherit"><AdminPanelSettingsTwoToneIcon />Make Admin</Button></Link>
                         <Divider />
 
-                        <Link style={{ textDecoration: 'none' }} to={`${url}/manageProduct`} ><Button color="inherit">Manage Products</Button></Link>
+                        <Link style={{ textDecoration: 'none' }} to={`${url}/manageProduct`} ><Button color="inherit"><ManageAccountsTwoToneIcon /> Manage Products</Button></Link>
 
                     </Box>
             }
 
             <Divider />
             <Box>
-                <Button sx={{ color: 'blue' }} onClick={logOut} color="inherit">Log Out</Button>
+                <Button sx={{ color: 'blue' }} onClick={logOut} color="inherit"><LoginTwoToneIcon /> Log Out</Button>
 
             </Box>
         </div>
@@ -112,7 +129,6 @@ function Dashboard(props) {
                 sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
                 aria-label="mailbox folders"
             >
-                {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
                 <Drawer
                     container={container}
                     variant="temporary"

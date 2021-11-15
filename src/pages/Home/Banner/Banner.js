@@ -15,7 +15,7 @@ const Banner = () => {
                 <Grid container spacing={2}>
                     <Grid style={{ ...verticalCenter, textAlign: 'left' }} item xs={12} md={6}>
                         <Box>
-                            <Typography sx={{ fontWeight: '700', color: '#1B3E41' }} variant='h2'>
+                            <Typography sx={{ fontWeight: '700', color: '#111827' }} variant='h2'>
                                 Top Quality, <br />
                                 Factory Price
 
@@ -23,7 +23,7 @@ const Banner = () => {
                             <Typography variant='h5' sx={{ my: 3, width: '75%' }}>
                                 Individual saddle fitting according to your height and weight. Have spare parts and want to sell or exchange them? Come and see!
                             </Typography>
-                            <Button sx={{ p: 1 }} variant="contained" color="success">Choose Your Bike</Button>
+                            <Button sx={{ p: 1 }} variant="contained" >Choose Your Bike</Button>
                         </Box>
                     </Grid>
                     <Grid style={verticalCenter} item xs={12} md={6}>

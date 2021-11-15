@@ -33,7 +33,7 @@ const Product = (props) => {
                     </CardContent>
                 </CardActionArea>
                 <CardActions >
-                    <NavLink style={{ margin: '0 auto' }}
+                    <NavLink style={{ margin: '0 auto', textDecoration: 'none' }}
                         to={{
                             pathname: "/purchase",
                             product: props.product,

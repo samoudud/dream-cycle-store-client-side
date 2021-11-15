@@ -16,7 +16,7 @@ const Products = () => {
 
     return (
         <Container sx={{ my: 2 }}>
-            <Typography sx={{ color: '#1B3E41', mb: 2, fontWeight: 700 }} variant="h4">Discover <br /> our new arrivals </Typography>
+            <Typography sx={{ color: '#111827', mb: 2, fontWeight: 700 }} variant="h4">Discover <br /> our new arrivals </Typography>
 
             <Grid container spacing={2}>
                 {

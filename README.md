@@ -2,13 +2,13 @@
 
 This project was Created with [Create React App](https://dream-cycle-store-kcp.firebaseapp.com/).
 
-## [Client Side Private repo link]
-Click here for the private repo: [Client Side code](https://github.com/programming-hero-web-course-4/niche-website-client-side-samoudud)
+## [Client Side Public repo link]
+Click here for the Public repo: [Client Side code](https://github.com/samoudud/dream-cycle-store-client-side)
 
 
 
-## [Server Side Private repo link]
-Click here for the private repo: [Server site code](https://github.com/programming-hero-web-course-4/niche-website-server-side-samoudud)
+## [Server Side Public repo link]
+Click here for the Public repo: [Server site code](https://github.com/samoudud/dream-cycle-store-server-side)
 
 ## [Server Side Live link]
 click here for the server side: [live link](https://infinite-everglades-57126.herokuapp.com) 
